@@ -29,9 +29,22 @@ public class TicTacToeGame {
         System.out.println("------------------");
         System.out.println("  " + board[7] + "  |  " + board[8]  + "   | " + board[9] + "  ");
     }
+    public static void playerLocation() {                               //Allowing the user to move to a location (UC4)
+        System.out.print("Enter the location from 1-9 to make a move : ");
+        int boardLocation = scanner.nextInt();
+        if (boardLocation < 10 && boardLocation > 0) {
+            board[boardLocation] = player;
+            showBoard();
+        } else {
+            System.out.println("Invalid input. Please select location between 1-9 only");
+            playerLocation();       //Calling the method once again
+        }
+    }
     public static void main(String[] args) {
+        System.out.println("Welcome to TicTacToe game");
         createBoard();                        //Calling the methods
         playerChoice();
         showBoard();
+        playerLocation();
     }
 }
