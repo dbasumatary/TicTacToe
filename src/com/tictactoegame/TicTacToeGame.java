@@ -42,17 +42,28 @@ public class TicTacToeGame {
             playerLocation();       //Calling the method once again
         }
     }
-    public static boolean isEmpty() {                  //Checking for free space before making move
+    public static boolean isEmpty() {                  //Checking for free space before making move (UC5)
         if (board[boardLocation] == ' ') {
             return true;
         } else {
             return false;
         }
     }
+    public static void tossCheck() {                               //Checking who plays first (UC6)
+        int tossResult = (int) ( Math.random() * 2 + 1);           //Using random to check toss win or lose
+        System.out.print("\nChoose 1 or 2 : ");
+        int flip = scanner.nextInt();
+        if (flip == tossResult) {
+            System.out.println("\nPlayer Won The Toss! Player Starts");
+        } else {
+            System.out.println("\nComputer Won The Toss! Computer Starts");
+        }
+    }
     public static void main(String[] args) {
         System.out.println("Welcome to TicTacToe game");
         createBoard();                        //Calling the methods
         playerChoice();
+        tossCheck();
         showBoard();
         playerLocation();
     }
