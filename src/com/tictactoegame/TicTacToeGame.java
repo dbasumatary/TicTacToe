@@ -53,7 +53,7 @@ public class TicTacToeGame {
         System.out.println("\nComputer Is Playing");
         do {
             boardLocation = random.nextInt(9) + 1;
-            predictWin();                                                  //Calling the method
+            predictWin();                                                  //Calling the method predictWin
             if(predictWin()){
             }
         } while (!isEmpty(boardLocation));
@@ -61,100 +61,100 @@ public class TicTacToeGame {
         System.out.println("The computer played the location " + boardLocation);
         showBoard();
     }
-    public static boolean predictWin() {                     //Predicting the various win scenarios for computer
-        if (board[1] == computer && board[2] == computer && board[3] == ' ') {
+    public static boolean predictWin() {                     //Predicting the various win scenarios for computer and player
+        if ((board[1] == computer && board[2] == computer && board[3] == ' ') || (board[1] == player && board[2] == player && board[3] == ' ')) {
             boardLocation = 3;
             return true;
         }
-        if (board[1] == computer && board[3] == computer && board[2] == ' ') {
+        if ((board[1] == computer && board[3] == computer && board[2] == ' ') || (board[1] == player && board[3] == player && board[2] == ' ')) {
             boardLocation = 2;
             return true;
         }
-        if (board[3] == computer && board[2] == computer && board[1] == ' ') {
+        if ((board[3] == computer && board[2] == computer && board[1] == ' ') || (board[3] == player && board[2] == player && board[1] == ' ')){
             boardLocation = 1;
             return true;
         }
-        if (board[4] == computer && board[5] == computer && board[6] == ' ') {
+        if ((board[4] == computer && board[5] == computer && board[6] == ' ') || (board[4] == player && board[5] == player && board[6] == ' ')){
             boardLocation = 6;
             return true;
         }
-        if (board[4] == computer && board[6] == computer && board[5] == ' ') {
+        if ((board[4] == computer && board[6] == computer && board[5] == ' ') || (board[4] == player && board[6] == player && board[5] == ' ')){
             boardLocation = 5;
             return true;
         }
-        if (board[6] == computer && board[5] == computer && board[4] == ' ') {
+        if ((board[6] == computer && board[5] == computer && board[4] == ' ') || (board[6] == player && board[5] == player && board[4] == ' ')){
             boardLocation = 4;
             return true;
         }
-        if (board[7] == computer && board[8] == computer && board[9] == ' ') {
+        if ((board[7] == computer && board[8] == computer && board[9] == ' ') || (board[7] == player && board[8] == player && board[9] == ' ')){
             boardLocation = 9;
             return true;
         }
-        if (board[7] == computer && board[9] == computer && board[8] == ' ') {
+        if ((board[7] == computer && board[9] == computer && board[8] == ' ') || (board[7] == player && board[9] == player && board[8] == ' ')){
             boardLocation = 8;
             return true;
         }
-        if (board[9] == computer && board[8] == computer && board[7] == ' ') {
+        if ((board[9] == computer && board[8] == computer && board[7] == ' ') || (board[9] == player && board[8] == player && board[7] == ' ')){
             boardLocation = 7;
             return true;
         }
-        if (board[1] == computer && board[4] == computer && board[7] == ' ') {
+        if ((board[1] == computer && board[4] == computer && board[7] == ' ') || (board[1] == player && board[4] == player && board[7] == ' ')){
             boardLocation = 7;
             return true;
         }
-        if (board[1] == computer && board[7] == computer && board[4] == ' ') {
+        if ((board[1] == computer && board[7] == computer && board[4] == ' ') || (board[1] == player && board[7] == player && board[4] == ' ')){
             boardLocation = 4;
             return true;
         }
-        if (board[7] == computer && board[4] == computer && board[1] == ' ') {
+        if ((board[7] == computer && board[4] == computer && board[1] == ' ') || (board[7] == player && board[4] == player && board[1] == ' ')){
             boardLocation = 1;
             return true;
         }
-        if (board[2] == computer && board[5] == computer && board[8] == ' ') {
+        if ((board[2] == computer && board[5] == computer && board[8] == ' ') || (board[2] == player && board[5] == player && board[8] == ' ')){
             boardLocation = 8;
             return true;
         }
-        if (board[2] == computer && board[8] == computer && board[5] == ' ') {
+        if ((board[2] == computer && board[8] == computer && board[5] == ' ') || (board[2] == player && board[8] == player && board[5] == ' ')){
             boardLocation = 5;
             return true;
         }
-        if (board[8] == computer && board[5] == computer && board[2] == ' ') {
+        if ((board[8] == computer && board[5] == computer && board[2] == ' ') || (board[8] == player && board[5] == player && board[2] == ' ')){
             boardLocation = 2;
             return true;
         }
-        if (board[3] == computer && board[6] == computer && board[9] == ' ') {
+        if ((board[3] == computer && board[6] == computer && board[9] == ' ') || (board[3] == player && board[6] == player && board[9] == ' ')){
             boardLocation = 9;
             return true;
         }
-        if (board[3] == computer && board[9] == computer && board[6] == ' ') {
+        if ((board[3] == computer && board[9] == computer && board[6] == ' ') || (board[3] == player && board[9] == player && board[6] == ' ')){
             boardLocation = 6;
             return true;
         }
-        if (board[9] == computer && board[6] == computer && board[3] == ' ') {
+        if ((board[9] == computer && board[6] == computer && board[3] == ' ') || (board[9] == player && board[6] == player && board[3] == ' ')){
             boardLocation = 3;
             return true;
         }
-        if (board[1] == computer && board[5] == computer && board[9] == ' ') {
+        if ((board[1] == computer && board[5] == computer && board[9] == ' ') || (board[1] == player && board[5] == player && board[9] == ' ')){
             boardLocation = 9;
             return true;
         }
-        if (board[1] == computer && board[9] == computer && board[5] == ' ') {
+        if ((board[1] == computer && board[9] == computer && board[5] == ' ') || (board[1] == player && board[9] == player && board[5] == ' ')){
             boardLocation = 5;
             return true;
         }
-        if (board[9] == computer && board[5] == computer && board[1] == ' ') {
+        if ((board[9] == computer && board[5] == computer && board[1] == ' ') || (board[9] == player && board[5] == player && board[1] == ' ')){
             boardLocation = 1;
             return true;
         }
-        if (board[3] == computer && board[5] == computer && board[7] == ' ') {
+        if ((board[3] == computer && board[5] == computer && board[7] == ' ') || (board[3] == player && board[5] == player && board[7] == ' ')){
             boardLocation = 7;
             return true;
         }
-        if (board[3] == computer && board[7] == computer && board[5] == ' ') {
+        if ((board[3] == computer && board[7] == computer && board[5] == ' ') || (board[3] == player && board[7] == player && board[5] == ' ')){
             boardLocation = 5;
             return true;
         }
-        if (board[7] == computer && board[5] == computer && board[3] == ' ') {
+        if ((board[7] == computer && board[5] == computer && board[3] == ' ') || (board[7] == player && board[5] == player && board[3] == ' ')){
             boardLocation = 3;
             return true;
         } else
