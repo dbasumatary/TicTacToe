@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class TicTacToeGame {
     static char[] board = new char[10];                     //Char array of board
     static char player, computer;                           //To store the player and computer selection
+    private static int boardLocation;
     public static Scanner scanner = new Scanner(System.in);
     static void createBoard(){                             //Create a board of size 10 and ignoring 0th index (UC1)
         for(int i = 0; i < board.length; i++) {
@@ -17,7 +18,7 @@ public class TicTacToeGame {
         } else if(player == 'O'){
             computer = 'X';
         }else {
-            System.err.println("Incorrect entry. Please select either X or O");
+            System.out.println("Incorrect entry. Please select either X or O");
         }
         System.out.println("You have selected : " +player);
         System.out.println("Computer's choice is : " +computer);
@@ -31,13 +32,21 @@ public class TicTacToeGame {
     }
     public static void playerLocation() {                               //Allowing the user to move to a location (UC4)
         System.out.print("Enter the location from 1-9 to make a move : ");
-        int boardLocation = scanner.nextInt();
-        if (boardLocation < 10 && boardLocation > 0) {
+        boardLocation = scanner.nextInt();
+        scanner.nextLine();
+        if (boardLocation < 10 && boardLocation > 0 && isEmpty()) {
             board[boardLocation] = player;
             showBoard();
         } else {
             System.out.println("Invalid input. Please select location between 1-9 only");
             playerLocation();       //Calling the method once again
+        }
+    }
+    public static boolean isEmpty() {                  //Checking for free space before making move
+        if (board[boardLocation] == ' ') {
+            return true;
+        } else {
+            return false;
         }
     }
     public static void main(String[] args) {
