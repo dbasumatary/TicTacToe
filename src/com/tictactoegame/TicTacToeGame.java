@@ -52,9 +52,20 @@ public class TicTacToeGame {
     public static void computerLocation() {                       //Determining the computer location using random (UC7)
         System.out.println("\nComputer Is Playing");
         do {
-            boardLocation = random.nextInt(9) + 1;
+            int cornerLocation = random.nextInt(4) + 1;
             predictWin();                                                  //Calling the method predictWin
             if(predictWin()){
+            }
+            else {                                                       //Taking the available corners if neither win nor lose
+                if(cornerLocation == 1){
+                    boardLocation = 1;
+                } else if (cornerLocation == 2) {
+                    boardLocation = 3;
+                }else if (cornerLocation == 3) {
+                    boardLocation = 7;
+                }else if (cornerLocation == 4) {
+                    boardLocation = 9;
+                }
             }
         } while (!isEmpty(boardLocation));
         board[boardLocation] = computer;
