@@ -9,10 +9,12 @@ public class TicTacToeGame {
     private static boolean isWinner = false;
     public static Scanner scanner = new Scanner(System.in);
     public static final Random random = new Random();       //Using random class to generate random numbers
+    private static int userInput;
     static void createBoard(){                             //Create a board of size 10 and ignoring 0th index (UC1)
         for(int i = 0; i < board.length; i++) {
             board[i] = ' ';
         }
+        isWinner = false;
     }
     static void playerChoice() {                               //Allowing player to choose the letter X or O (UC2)
         System.out.print("Please select either X or O : ");
@@ -244,7 +246,7 @@ public class TicTacToeGame {
                 playerLocation();
                 if (!checkBoardIsFull())                          //Checking if the board is filled
                     computerLocation();
-            } else {
+            } else if (!playerWinLossToss){
                 computerLocation();
                 if (!checkBoardIsFull())                          //Checking if the board is filled
                     playerLocation();
@@ -255,9 +257,21 @@ public class TicTacToeGame {
     }
     public static void main(String[] args) {
         System.out.println("Welcome to TicTacToe game");
-        createBoard();                        //Calling the methods
-        playerChoice();
-        tossCheck();
-        startGame();
+        boolean play = true;
+        while (play){                             //it will always be true unless we have an option to exit
+            createBoard();                        //Calling the methods
+            playerChoice();
+            showBoard();
+            tossCheck();
+            startGame();
+            System.out.println();
+            System.out.println("Press 1 to continue playing");
+            System.out.println("Press 2 to exit the game");
+            userInput = scanner.nextInt();
+            if (userInput == 2){
+                System.out.println("Thank You!");
+                System.exit(0);                       //exit the game
+            }
+        }
     }
 }
