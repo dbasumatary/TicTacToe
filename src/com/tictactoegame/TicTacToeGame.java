@@ -51,26 +51,41 @@ public class TicTacToeGame {
     }
     public static void computerLocation() {                       //Determining the computer location using random (UC7)
         System.out.println("\nComputer Is Playing");
-        do {
-            int cornerLocation = random.nextInt(4) + 1;
-            predictWin();                                                  //Calling the method predictWin
-            if(predictWin()){
-            }
-            else {                                                       //Taking the available corners if neither win nor lose
-                if(cornerLocation == 1){
-                    boardLocation = 1;
-                } else if (cornerLocation == 2) {
-                    boardLocation = 3;
-                }else if (cornerLocation == 3) {
-                    boardLocation = 7;
-                }else if (cornerLocation == 4) {
-                    boardLocation = 9;
-                }
-            }
+        do {                              //call the methods
+            takeCorner();
+            if (takeCenter()){}                 //boolean methods
+            if (takeOtherPosition()){}
+            if (predictWin()){}
         } while (!isEmpty(boardLocation));
         board[boardLocation] = computer;
         System.out.println("The computer played the location " + boardLocation);
         showBoard();
+    }
+    public static void takeCorner(){                  //take corner if possible
+        int[] cornerPosition = {1, 3, 7, 9};
+        int corner =  random.nextInt(3);          //four possible corners
+        boardLocation = cornerPosition[corner];
+    }
+    public static boolean takeCenter(){                      //take center if possible
+        if (board[1] != ' ' && board[3] != ' ' && board[7] != ' ' && board[9] != ' ') {      //if corners are not empty
+            if (isEmpty(5)) {
+                boardLocation = 5;                     //if center is empty then occupy it
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean takeOtherPosition(){
+        //if corners and center are not empty then occupy other remaining positions
+        if (board[1] != ' ' && board[3] != ' ' && board[7] != ' ' && board[9] != ' ' && board[5] != ' ') {
+            int[] otherPositionLocation = { 2, 4, 6, 8 };
+            int notCenterOrCorner = random.nextInt(3);
+            if (isEmpty(otherPositionLocation[notCenterOrCorner])) {          //check if corners and center are not empty
+                boardLocation = otherPositionLocation[notCenterOrCorner];     //occupy other remaining positions
+                return true;
+            }
+        }
+        return false;
     }
     public static boolean predictWin() {                     //Predicting the various win scenarios for computer and player
         if ((board[1] == computer && board[2] == computer && board[3] == ' ') || (board[1] == player && board[2] == player && board[3] == ' ')) {
@@ -193,6 +208,7 @@ public class TicTacToeGame {
         }
         return false;
     }
+
     public static boolean checkWinner() {                      //Checking winner for player and computer
         if (isWinner)                                          //Initially the boolean statement is false
             return true;
